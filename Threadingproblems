@@ -1,0 +1,47 @@
+
+#RaceDemo.java
+public class RaceDemo {
+	public static void main(String[] args)
+	{
+		Racer racer=new Racer();
+		Thread tortoiseThread=new Thread(racer,"Tortoise");
+		Thread hareThread=new Thread(racer,"Hare");
+		Thread leopardThread=new Thread(racer,"Leopard");
+		Thread elephantThread=new Thread(racer,"Elephant");
+		tortoiseThread.start();
+		hareThread.start();
+		elephantThread.start();
+		leopardThread.start();
+	}
+
+}
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+#Racer.java
+
+public class Racer implements Runnable {
+	public static String winner;
+	public void race()
+	{
+		for(int i=1;i<100;i++)
+		{
+			System.out.println("Distance covered by "+Thread.currentThread().getName()+" is "+i+" meters");
+			
+			if(i==30 && Thread.currentThread().getName().equals("Hare"))
+			{
+				Thread.currentThread().setName("Lion");
+				System.out.println(Thread.currentThread().getState());
+				try{
+					System.out.println(Thread.currentThread().getName()+" is sleeping...ZZZZZZZ");
+					Thread.sleep(1000);
+					Thread.currentThread().getState();
+				}catch(InterruptedException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	public void run()
+	{
+		this.race();
+	}
+}
