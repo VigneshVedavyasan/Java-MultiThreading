@@ -65,7 +65,6 @@ public class Worker {
 		System.out.println("Time taken : " + (end-start));
 		System.out.println(" List 1 : "+list1.size()+"\n List 2 : "+list2.size());
 
-
 	}
 
 }
