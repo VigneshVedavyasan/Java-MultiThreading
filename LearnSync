@@ -1,0 +1,15 @@
+package LearnSync;
+
+public class LearnSync {
+
+	public static void main(String[] args) {
+		StringBuffer sb=new StringBuffer("A");
+		SyncedClass syn1=new SyncedClass(sb);
+		SyncedClass syn2=new SyncedClass(sb);
+		SyncedClass syn3=new SyncedClass(sb);
+		syn1.start();
+		syn2.start();
+		syn3.start();
+	}
+
+}
